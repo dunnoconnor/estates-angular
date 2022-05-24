@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "estates-c59e8": {
+      "hosting": {
+        "estates-angular": [
+          "estates-c59e8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "estates-c59e8"
+  }
+}
