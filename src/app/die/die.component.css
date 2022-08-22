@@ -1,0 +1,13 @@
+:host {
+    display: block;
+  }
+  
+.die {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    color: white;
+    width: 30px;
+    height: 30px;
+}

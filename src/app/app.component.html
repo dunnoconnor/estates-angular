@@ -5,56 +5,52 @@
 
 <div class="content-wrapper">
 
-  <button (click)="newTask()" mat-button>
-    <mat-icon>add</mat-icon> Add Task
+  <button (click)="newGame()" mat-button>
+    <mat-icon>add</mat-icon> New Game
   </button>
 
   <div class="container-wrapper">
-    <div class="container">
-      <h2>Backlog</h2>
-
-      <mat-card
-        cdkDropList
-        id="todo"
-        #todoList="cdkDropList"
-        [cdkDropListData]="todo | async"
-        [cdkDropListConnectedTo]="[doneList, inProgressList]"
-        (cdkDropListDropped)="drop($event)"
-        class="list">
-        <p class="empty-label" *ngIf="(todo | async)?.length === 0">Empty list</p>
-        <app-task (edit)="editTask('todo', $event)" *ngFor="let task of todo | async" cdkDrag [task]="task"></app-task>
-      </mat-card>
 
     <div class="container">
-      <h2>In progress</h2>
-
       <mat-card
         cdkDropList
-        id="inProgress"
-        #inProgressList="cdkDropList"
-        [cdkDropListData]="inProgress | async"
-        [cdkDropListConnectedTo]="[todoList, doneList]"
+        id="market1"
+        #market1List="cdkDropList"
+        [cdkDropListData]="market1 | async"
+        [cdkDropListConnectedTo]="[market2List, market3List]"
         (cdkDropListDropped)="drop($event)"
         class="list">
-        <p class="empty-label" *ngIf="(inProgress | async)?.length === 0">Empty list</p>
-        <app-task (edit)="editTask('inProgress', $event)" *ngFor="let task of inProgress | async" cdkDrag [task]="task"></app-task>
+        <p class="empty-label" *ngIf="(market1 | async)?.length === 0">0/3</p>
+        <app-die *ngFor="let die of market1 | async" cdkDrag [die]="die"></app-die>
       </mat-card>
     </div>
 
     <div class="container">
-      <h2>Done</h2>
-
       <mat-card
         cdkDropList
-        id="done"
-        #doneList="cdkDropList"
-        [cdkDropListData]="done | async"
-        [cdkDropListConnectedTo]="[todoList, inProgressList]"
+        id="market2"
+        #market2List="cdkDropList"
+        [cdkDropListData]="market2 | async"
+        [cdkDropListConnectedTo]="[market1List, market3List]"
         (cdkDropListDropped)="drop($event)"
         class="list">
-        <p class="empty-label" *ngIf="(done | async)?.length === 0">Empty list</p>
-        <app-task (edit)="editTask('done', $event)" *ngFor="let task of done | async" cdkDrag [task]="task"></app-task>
+        <p class="empty-label" *ngIf="(market2 | async)?.length === 0">0/3</p>
+        <app-die *ngFor="let die of market2 | async" cdkDrag [die]="die"></app-die>
       </mat-card>
     </div>
-  </div>
+
+    <div class="container">
+      <mat-card
+      cdkDropList
+      id="market3"
+      #market3List="cdkDropList"
+      [cdkDropListData]="market3 | async"
+      [cdkDropListConnectedTo]="[market1List, market2List]"
+      (cdkDropListDropped)="drop($event)"
+      class="list">
+      <p class="empty-label" *ngIf="(market3 | async)?.length === 0">0/3</p>
+      <app-die *ngFor="let die of market3 | async" cdkDrag [die]="die"></app-die>
+    </mat-card>
+    </div>
+
 </div>
